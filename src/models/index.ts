@@ -13,6 +13,7 @@ export interface Image2CanvasConfig extends IBaseConfig {
   height?: number,
   scale?: number,
   orientation?: number,
+  maxWH?: number
 }
 
 export interface ICompressConfig extends Image2CanvasConfig {

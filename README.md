@@ -20,11 +20,11 @@
 ### Install
 
 ```bash
-npm i image-conversion --save
+npm i image-conversion-ex --save
 
 # or 
 
-yarn add image-conversion
+yarn add image-conversion-ex
 ```
 ### Include the library
 
@@ -35,19 +35,19 @@ in browser:
 
 in CommonJS:
 ```js
-const imageConversion = require("image-conversion");
+const imageConversion = require("image-conversion-ex");
 ```
 
 in ES6:
 
 ```js
-import * as imageConversion from 'image-conversion';
+import * as imageConversion from 'image-conversion-ex';
 ```
 
 or 
 
 ```ts
-import {compress, compressAccurately} from 'image-conversion';
+import {compress, compressAccurately} from 'image-conversion-ex';
 ```
 
 ### Use examples
@@ -115,6 +115,7 @@ imageConversion.imagetoCanvas(image,{
   scale: 0.5,   //the zoom ratio relative to the original image, range 0-10;
                 //Setting config.scale will override the settings of
                 //config.width and config.height;
+  maxWH: 1440,//最大宽高，等比缩小
 })
 ```
 `config.orientation` has many options to choose,as follow:
@@ -177,6 +178,7 @@ imageConversion.compress(file,{
   height: 200,
   orientation:2,
   scale: 0.5,
+  maxWH: 1440,
 })
 ```
 
@@ -214,6 +216,7 @@ imageConversion.compressAccurately(file,{
   height: 200,
   orientation:2,
   scale: 0.5,
+  maxWH: 1440,
 })
 ```
 

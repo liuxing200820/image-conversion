@@ -20,6 +20,7 @@ import { Image2CanvasConfig } from '@models';
  * 			6		顺时针90°
  * 			7		顺时针90°+垂直翻转
  * 			8		逆时针90°
+ * 		@param {number} maxWH - 最大宽度和高度，等比缩小
  * @type {config}
  *
  * @returns {Promise(canvas)}
@@ -36,7 +37,20 @@ export default async function imagetoCanvas(image: HTMLImageElement, config: Ima
     }
   }
   // 设置宽高
-  if (!myConfig.scale) {
+  if (myConfig.maxWH && myConfig.maxWH > 0) {
+    if (image.width < myConfig.maxWH && image.height < myConfig.maxWH) {
+      width = image.width;
+      height = image.height;
+    } else {
+      if (image.width > image.height) {
+        width = myConfig.maxWH;
+        height = image.height * (width / image.width);
+      } else {
+        height = myConfig.maxWH;
+        width = image.width * (height / image.height);
+      }
+    }
+  } else if (!myConfig.scale) {
     width = myConfig.width || myConfig.height * image.width / image.height || image.width;
     height = myConfig.height || myConfig.width * image.height / image.width || image.height;
   } else {
